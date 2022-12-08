@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .grid-container {
   display: grid;
+}
+
+.grid-item {
+  background-color: #333;
 }
