@@ -8,7 +8,7 @@ window.addEventListener("load", function () {
 const gridContainer = document.querySelector(".grid-container");
 const range = document.getElementById("range");
 const label = document.getElementById("label");
-
+let mouseDown = false;
 function populateGrid(gridSize) {
   gridContainer.textContent = "";
   gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
@@ -34,7 +34,10 @@ range.addEventListener("mouseup", function () {
 });
 
 gridContainer.addEventListener("mousedown", function (e) {
+  mouseDown = true;
   if (!e.target.classList.contains("grid-item")) return;
+});
 
-  changeColor(e);
+gridContainer.addEventListener("mouseup", function () {
+  mouseDown = false;
 });
