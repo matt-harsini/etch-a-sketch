@@ -24,21 +24,29 @@ body {
 
 .container {
   display: grid;
+  row-gap: 10vh;
+  height: 100%;
 }
 
 .grid-container {
   display: grid;
   height: 50vh;
-  width: 30vw;
+  width: 50vh;
   margin: auto;
+  align-self: center;
 }
 
 .grid-item {
   background-color: #f1f3f5;
-  display: inline block;
+  display: block;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .header {
   justify-self: center;
   align-self: center;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 4rem);
 }

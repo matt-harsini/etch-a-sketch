@@ -8,7 +8,17 @@ window.addEventListener("load", function () {
 const gridContainer = document.querySelector(".grid-container");
 const range = document.getElementById("range");
 const label = document.getElementById("label");
+const body = document.querySelector("body");
+const RGB = document.querySelector(".RGB");
 let mouseDown = false;
+let clickRGB = false;
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function populateGrid(gridSize) {
   gridContainer.textContent = "";
   gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
@@ -22,7 +32,13 @@ function populateGrid(gridSize) {
 }
 
 function changeColor(e) {
-  e.target.style.backgroundColor = "black";
+  if (clickRGB) {
+    console.log(123)
+    e.target.style.backgroundColor = `rgb(${getRandomInt(
+      0,
+      255
+    )}, ${getRandomInt(0, 255)}, ${getRandomInt(0, 255)})`;
+  } else e.target.style.backgroundColor = "black";
 }
 
 range.addEventListener("input", function () {
@@ -33,14 +49,19 @@ range.addEventListener("mouseup", function () {
   populateGrid(range.value);
 });
 
-gridContainer.addEventListener("mousedown", function () {
-  mouseDown = true;
-});
 gridContainer.addEventListener("mousemove", function (e) {
   if (!e.target.classList.contains("grid-item")) return;
   if (mouseDown) changeColor(e);
 });
 
-gridContainer.addEventListener("mouseup", function () {
+gridContainer.addEventListener("mousedown", function () {
+  mouseDown = true;
+});
+
+body.addEventListener("mouseup", function () {
   mouseDown = false;
+});
+
+RGB.addEventListener("click", function () {
+  clickRGB = !clickRGB;
 });
