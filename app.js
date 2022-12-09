@@ -11,7 +11,8 @@ function populateGrid(gridSize) {
   const columns = gridSize / 2;
   gridContainer.textContent = "";
   gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
-  for (let i = 0; i < gridSize; i++) {
+  gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+  for (let i = 0; i < gridSize*gridSize; i++) {
     const div = document.createElement("div");
     div.textContent = '123'
     div.classList.add("grid-item");
