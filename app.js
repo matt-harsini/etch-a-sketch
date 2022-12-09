@@ -33,9 +33,12 @@ range.addEventListener("mouseup", function () {
   populateGrid(range.value);
 });
 
-gridContainer.addEventListener("mousedown", function (e) {
+gridContainer.addEventListener("mousedown", function () {
   mouseDown = true;
+});
+gridContainer.addEventListener("mousemove", function (e) {
   if (!e.target.classList.contains("grid-item")) return;
+  if (mouseDown) changeColor(e);
 });
 
 gridContainer.addEventListener("mouseup", function () {
