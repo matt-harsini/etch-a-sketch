@@ -5,11 +5,14 @@
 window.addEventListener("load", function () {
   populateGrid(1);
 });
+
 const gridContainer = document.querySelector(".grid-container");
 const range = document.getElementById("range");
 const label = document.getElementById("label");
 const body = document.querySelector("body");
 const RGB = document.querySelector(".RGB");
+const clear = document.querySelector(".clear");
+
 let mouseDown = false;
 let clickRGB = false;
 
@@ -33,7 +36,6 @@ function populateGrid(gridSize) {
 
 function changeColor(e) {
   if (clickRGB) {
-    console.log(123)
     e.target.style.backgroundColor = `rgb(${getRandomInt(
       0,
       255
@@ -54,8 +56,8 @@ gridContainer.addEventListener("mousemove", function (e) {
   if (mouseDown) changeColor(e);
 });
 
-gridContainer.addEventListener("mousedown", function () {
-  mouseDown = true;
+gridContainer.addEventListener("mousedown", function (e) {
+  if (e.button === 0) mouseDown = true;
 });
 
 body.addEventListener("mouseup", function () {
@@ -64,4 +66,11 @@ body.addEventListener("mouseup", function () {
 
 RGB.addEventListener("click", function () {
   clickRGB = !clickRGB;
+});
+
+clear.addEventListener("click", function () {
+  const divs = gridContainer.querySelectorAll(".grid-item");
+  divs.forEach((div) => {
+    div.style.backgroundColor = "white";
+  });
 });

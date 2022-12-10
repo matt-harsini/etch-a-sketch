@@ -25,7 +25,7 @@ body {
 
 .container {
   display: grid;
-  row-gap: 10vh;
+  row-gap: 3vh;
   height: 100%;
 }
 
@@ -51,4 +51,32 @@ body {
   align-self: center;
   font-weight: 700;
   font-size: clamp(1rem, 1.5vw, 4rem);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4vw;
+}
+
+.buttons button {
+  margin: 0;
+  background-color: #343a40;
+  color: white;
+  padding: 1vh 2vw;
+  border-style: none;
+  border-radius: 1.25rem;
+  box-shadow: 0 5px 10px 0.5px rgba(134, 142, 150, 0.25);
+  width: 6vw;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.buttons button:hover {
+  box-shadow: 0 5px 20px 0.5px rgba(134, 142, 150, 0.5);
+  background-color: #212529;
+}
+
+.buttons button:active {
+  box-shadow: 0 5px 20px 0.5px rgba(134, 142, 150, 0);
 }
