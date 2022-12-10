@@ -51,13 +51,18 @@ range.addEventListener("mouseup", function () {
   populateGrid(range.value);
 });
 
-gridContainer.addEventListener("mousemove", function (e) {
+gridContainer.addEventListener("mousedown", function (e) {
   if (!e.target.classList.contains("grid-item")) return;
-  if (mouseDown) changeColor(e);
+  if (e.button === 0) {
+    mouseDown = true;
+    changeColor(e);
+  }
 });
 
-gridContainer.addEventListener("mousedown", function (e) {
-  if (e.button === 0) mouseDown = true;
+gridContainer.addEventListener("mouseover", function (e) {
+  if (!e.target.classList.contains("grid-item")) return;
+  console.log(123);
+  if (mouseDown && e.button === 0) changeColor(e);
 });
 
 body.addEventListener("mouseup", function () {
